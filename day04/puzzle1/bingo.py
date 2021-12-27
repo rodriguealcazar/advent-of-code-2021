@@ -30,8 +30,7 @@ def number_location(number, board):
                 return (i, j)
 
 
-def main(args):
-    input_file = "test_input.txt" if len(args) > 1 else "input.txt"
+def main(input_file):
     with open(input_file, "r") as f:
         numbers = [int(n) for n in f.readline().strip().split(",")]
         lines = [l.strip() for l in f.readlines() if l.strip()]
@@ -58,4 +57,4 @@ def main(args):
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    main(sys.argv[1])
