@@ -11,16 +11,11 @@ def read_boards(lines):
 
 
 def read_board(lines):
-    board = []
-    bag = set()
-    for line in lines:
-        l = []
-        for n in re.sub(" +", " ", line.strip()).split(" "):
-            number = int(n)
-            l.append(number)
-            bag.add(number)
-        board.append(l)
-    return (board, bag)
+    numbers_positions = {}
+    for i, line in enumerate(lines):
+        for j, n in enumerate(re.sub(" +", " ", line.strip()).split(" ")):
+            numbers_positions[int(n)] = (i, j)
+    return numbers_positions
 
 
 def number_location(number, board):
@@ -35,25 +30,25 @@ def main(input_file):
         numbers = [int(n) for n in f.readline().strip().split(",")]
         lines = [l.strip() for l in f.readlines() if l.strip()]
         games = [
-            (b, s, defaultdict(lambda: 0)) for (b, s) in read_boards(lines)
+            (b, defaultdict(lambda: 0)) for b in read_boards(lines)
         ]
     for n in numbers:
-        for (b, s, r) in games:
-            loc = number_location(n, b)
-            if loc:
-                s.remove(n)
-                if r[f"l{loc[0]}"] == 4 or r[f"c{loc[1]}"] == 4:
+        for (board, r) in games:
+            if n in board:
+                x, y = board[n]
+                del board[n]
+                if r[f"l{x}"] == 4 or r[f"c{y}"] == 4:
                     # Finished
-                    su = reduce(lambda x, y: x + y, s)
-                    score = su * n if s else 0
-                    print(f"Winning board is {b}")
+                    su = reduce(lambda x, y: x + y, board.keys())
+                    score = su * n if board else 0
+                    print(f"Winning board is {board}")
                     print(f"Last number is {n}")
                     print(f"Sum of all unmarkedd is {su}")
                     print(f"Final score is {score}")
                     return
                 else:
-                    r[f"l{loc[0]}"] += 1
-                    r[f"c{loc[1]}"] += 1
+                    r[f"l{x}"] += 1
+                    r[f"c{y}"] += 1
 
 
 if __name__ == "__main__":
