@@ -27,7 +27,6 @@ class PathFindingTest(unittest.TestCase):
             dict(map_as_paths(map))
         )
 
-
     def test_example_1(self):
         paths = {
             'start': ['A', 'b'],
@@ -89,8 +88,6 @@ class PathFindingTest(unittest.TestCase):
             ],
             sorted(valid_paths([], 'start', map_as_paths(connections)))
         )
-
-
 
 
 if __name__ == "__main__":

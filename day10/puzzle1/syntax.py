@@ -35,8 +35,8 @@ def line_score(line):
 def main(input_file):
     with open(input_file, "r") as f:
         score = 0
-        for l in f.readlines():
-            line = l.strip()
+        for line in f.readlines():
+            l = line.strip()
             score += line_score(line)
     print(f"Final score: {score}")
 

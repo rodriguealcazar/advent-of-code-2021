@@ -3,7 +3,6 @@ import sys
 from collections import defaultdict
 
 
-
 def diagonal(diagram, xs, xe, ys, ye):
     for i in range(abs(xs - xe) + 1):
         x = xs + i if xs < xe else xs - i
@@ -33,7 +32,6 @@ def main(input_file):
                     diagram[f'{i}:{ys}'] += 1
             else:
                 diagonal(diagram, xs, xe, ys, ye)
-
 
     overlaps = 0
     for coords in diagram.values():

@@ -16,4 +16,3 @@ with open("input.txt", "r") as f:
 print(f"Final position: {horizontal}")
 print(f"Final depth: {depth}")
 print(horizontal * depth)
-

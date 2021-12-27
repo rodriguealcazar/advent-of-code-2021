@@ -12,16 +12,15 @@ def fold(dots, direction, position):
     return folded
 
 
-
 def main(input_file):
     coords = []
     with open(input_file, "r") as f:
-        for l in f:
-            if l.strip() and l[0] != "f":
-                x, y = l.strip().split(",")
+        for lines in f:
+            if lines.strip() and lines[0] != "f":
+                x, y = lines.strip().split(",")
                 coords.append((int(x), int(y)))
-            if l[0] == "f":
-                direction, position = l[11:].split("=")
+            if lines[0] == "f":
+                direction, position = lines[11:].split("=")
                 break
 
     folded = fold(coords, direction, int(position))

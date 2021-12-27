@@ -4,14 +4,15 @@ from itertools import starmap
 
 totals = []
 
+
 def count(index, bit):
     if len(totals) == index:
         totals.append(0)
 
     if bit == 0:
-       totals[index] -= 1
+        totals[index] -= 1
     else:
-       totals[index] += 1
+        totals[index] += 1
 
 
 def main(input_file):

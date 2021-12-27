@@ -5,6 +5,7 @@ from collections import defaultdict
 
 already_computed = {}
 
+
 def number_after(left, days):
     if left >= days:
         return 1
@@ -15,7 +16,7 @@ def number_after(left, days):
         if spawn_day - 2 not in already_computed:
             already_computed[spawn_day - 2] = number_after(6, spawn_day - 2)
 
-        return already_computed[spawn_day] + already_computed[spawn_day -2 ]
+        return already_computed[spawn_day] + already_computed[spawn_day - 2]
 
 
 def main(args):

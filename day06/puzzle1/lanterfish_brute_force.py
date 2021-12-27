@@ -1,7 +1,5 @@
 import sys
 
-from collections import defaultdict
-
 
 def main(args):
     input_file = "test_input.txt" if len(args) > 1 else "input.txt"
@@ -16,7 +14,6 @@ def main(args):
                 fishes[i] -= 1
 
     print(len(fishes))
-
 
 
 if __name__ == "__main__":

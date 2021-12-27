@@ -4,8 +4,8 @@ import sys
 def main(input_file):
     heightmap = []
     with open(input_file, "r") as f:
-        for l in f.readlines():
-            heightmap.append([int(n) for n in l.strip()])
+        for line in f.readlines():
+            heightmap.append([int(n) for n in line.strip()])
 
     total_risk = 0
     for y, line in enumerate(heightmap):

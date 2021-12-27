@@ -29,9 +29,7 @@ def main(input_file):
     with open(input_file, "r") as f:
         numbers = [int(n) for n in f.readline().strip().split(",")]
         lines = [l.strip() for l in f.readlines() if l.strip()]
-        games = [
-            (b, defaultdict(lambda: 0)) for b in read_boards(lines)
-        ]
+        games = [(b, defaultdict(lambda: 0)) for b in read_boards(lines)]
     for n in numbers:
         for (board, r) in games:
             if n in board:

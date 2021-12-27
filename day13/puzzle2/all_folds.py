@@ -24,12 +24,12 @@ def main(input_file):
     coords = set()
     folds = []
     with open(input_file, "r") as f:
-        for l in f:
-            if l.strip() and l[0] != "f":
-                x, y = l.strip().split(",")
+        for lines in f:
+            if lines.strip() and lines[0] != "f":
+                x, y = lines.strip().split(",")
                 coords.add((int(x), int(y)))
-            if l[0] == "f":
-                d, p = l[11:].split("=")
+            if lines[0] == "f":
+                d, p = lines[11:].split("=")
                 folds.append((d, int(p)))
 
     folded = folded_completely(coords, folds)
@@ -39,7 +39,6 @@ def main(input_file):
     print()
     print()
     print()
-
 
 
 if __name__ == "__main__":

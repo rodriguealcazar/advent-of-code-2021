@@ -1,7 +1,5 @@
 import sys
 
-from itertools import starmap
-
 totals = []
 
 
